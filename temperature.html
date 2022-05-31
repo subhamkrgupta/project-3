@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Staatliches&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600&family=Bebas+Neue&family=Comforter&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <p class="heading">Temperature Converter</p>
+        <div class="input">
+            <input id="itemp" type="number" placeholder="Enter temperature">
+            <input type="radio" id="celcius" name="itype" value="Celcius" onclick="check()">
+            <label for="celcius">Celcius</label>
+            <input type="radio" id="Fahrenheit" name="itype" value="Fahrenheit" onclick="check()">
+            <label for="Fahrenheit">Fahrenheit</label>
+        </div>
+        <div class="output">
+            <p id="otemp1" type="number" readonly></p>
+            <p id="otemp"></p>
+        </div>
+        <button id="btn">Convert</button>
+    </div>
+    <script>
+        let out;
+
+        function check() {
+            if (document.getElementById('celcius').checked) {
+                document.querySelector("#otemp").innerText = "Fahrenheit";
+                // document.querySelector("#otemp1").innerText = "32";
+            } else if (document.getElementById('Fahrenheit').checked) {
+                document.querySelector("#otemp").innerText = "Celcius";
+                // document.querySelector("#otemp1").innerText = "-17.7778";
+            }
+
+        }
+        btn.addEventListener('click', function convert() {
+            let type = document.querySelector('#otemp').innerHTML;
+            console.log(type);
+            if (type.trim() == String("Celcius")) {
+                let a = parseInt(document.getElementById("itemp").value);
+                out = (a - 32) * (5 / 9);
+            } else if (type.trim() == String("Fahrenheit")) {
+                let a = parseInt(document.getElementById("itemp").value);
+                out = ((9 / 5) * a) + 32;
+            } else if (document.querySelector('#itemp').value == null) {
+                alert("Please Enter a value");
+            } else {
+                alert("Please Choose a Converison");
+            }
+            document.querySelector("#otemp1").innerText = out;
+            console.log(out);
+        })
+    </script>
+</body>
+
+</html>
